@@ -1,0 +1,46 @@
+@import '../../styles/variables';
+
+.navbar {
+  padding: 1.25rem 0;
+  background-color: $white;
+  border-bottom: 1px solid $lavender-50;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-family: $font-heading;
+    font-size: 1.875rem;
+    font-weight: 800;
+    color: $lavender-600;
+    letter-spacing: -0.025em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .nav-link {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: $text-700;
+
+    &:hover {
+      color: $lavender-600;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar .nav-links {
+    display: none;
+  }
+}

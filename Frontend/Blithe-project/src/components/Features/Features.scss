@@ -1,0 +1,103 @@
+@use '../../styles/variables' as *;
+
+.features-section {
+  padding: 8rem 0;
+  background: $white;
+
+  .section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 4rem;
+
+    .badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: $lavender-100;
+      color: $lavender-600;
+      border-radius: $radius-full;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    h2 {
+      font-family: $font-heading;
+      font-size: 2.5rem;
+      color: $text-900;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+
+      span {
+        @include text-gradient;
+      }
+    }
+
+    p {
+      color: $text-500;
+      font-size: 1.125rem;
+    }
+  }
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  padding: 2.5rem;
+  background: $lavender-50;
+  border-radius: $radius-lg;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: $white;
+    border-color: $lavender-200;
+    box-shadow: $shadow-lg;
+    transform: translateY(-5px);
+
+    .feature-icon {
+      transform: scale(1.1);
+      background: $lavender-100;
+    }
+  }
+
+  .feature-icon {
+    width: 60px;
+    height: 60px;
+    background: $white;
+    border-radius: $radius-md;
+    @include flex-center;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    box-shadow: $shadow-sm;
+    transition: all 0.3s ease;
+  }
+
+  h3 {
+    font-family: $font-heading;
+    font-size: 1.25rem;
+    color: $text-900;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: $text-500;
+    line-height: 1.6;
+    font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .features-section {
+    padding: 5rem 0;
+    
+    .section-header {
+      h2 {
+        font-size: 2rem;
+      }
+    }
+  }
+}
