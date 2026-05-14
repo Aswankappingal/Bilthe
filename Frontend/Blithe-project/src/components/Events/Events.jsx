@@ -1,78 +1,9 @@
 import React from 'react';
-import { Search, ChevronDown, Filter, Calendar, Languages, Tag, Ticket, MapPin, Clock, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Search, ChevronDown, Calendar, Languages, Tag, Ticket, MapPin, Clock, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { MOCK_EVENTS } from '../../data/events';
 import './Events.scss';
-import concertImg from '../../assets/concert.png';
-import startupImg from '../../assets/startup.png';
-
-const MOCK_EVENTS = [
-  {
-    id: 1,
-    title: "MISMATCHED - A TAMIL COMEDY SHOW ft. Raja and ...",
-    category: "Comedy Shows",
-    date: "Sun, 17 May onwards",
-    time: "6:00 PM",
-    location: "Trinity Studio: Chennai",
-    price: "₹ 299",
-    image: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&auto=format&fit=crop&q=60",
-    promoted: true
-  },
-  {
-    id: 2,
-    title: "VIKKALS COMEDY CAFE - A standup comedy mic",
-    category: "Comedy Shows",
-    date: "Wed, 13 May onwards",
-    time: "7:30 PM",
-    location: "The Lab: Royapettah",
-    price: "₹ 150",
-    image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&auto=format&fit=crop&q=60",
-    promoted: true
-  },
-  {
-    id: 3,
-    title: "P.C.SORCAR & Dhayas International MAGIC SHOW",
-    category: "Performances",
-    date: "Sat, 16 May onwards",
-    time: "4:00 PM",
-    location: "Museum Theatre: Chennai",
-    price: "₹ 500",
-    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop&q=60",
-    promoted: false
-  },
-  {
-    id: 4,
-    title: "Vijay Antony Live in Concert - Chennai",
-    category: "Music Shows",
-    date: "Sat, 13 Jun",
-    time: "6:30 PM",
-    location: "YMCA Nandanam: Chennai",
-    price: "₹ 999",
-    image: concertImg,
-    promoted: false
-  },
-  {
-    id: 5,
-    title: "Art & Craft Workshop for Kids",
-    category: "Workshops",
-    date: "Sun, 24 May",
-    time: "10:00 AM",
-    location: "Creative Space: Adyar",
-    price: "₹ 450",
-    image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&auto=format&fit=crop&q=60",
-    promoted: false
-  },
-  {
-    id: 6,
-    title: "Startup Founders Meetup",
-    category: "Meetups",
-    date: "Fri, 22 May",
-    time: "5:00 PM",
-    location: "IITM Research Park",
-    price: "Free",
-    image: startupImg,
-    promoted: true
-  }
-];
 
 const FILTER_CATEGORIES = [
   "Workshops", "Comedy Shows", "Music Shows", "Kids", 
@@ -189,7 +120,7 @@ const Events = () => {
                 transition={{ delay: index * 0.05 }}
                 className="event-card-container"
               >
-                <div className="event-card glass">
+                <Link to={`/events/${event.id}`} className="event-card glass">
                   <div className="image-box">
                     <img src={event.image} alt={event.title} loading="lazy" />
                     <div className="overlays">
@@ -219,12 +150,12 @@ const Events = () => {
                         <Clock size={14} />
                         <span>{event.time}</span>
                       </div>
-                      <button className="details-btn">
+                      <span className="details-btn">
                         Details <ArrowRight size={14} />
-                      </button>
+                      </span>
                     </div>
                   </div>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>
