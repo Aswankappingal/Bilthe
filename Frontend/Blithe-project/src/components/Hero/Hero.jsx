@@ -10,8 +10,8 @@ const Hero = () => {
         <div className="hero-content">
           <div className="badge">₹0 to Host. Always.</div>
           <h1 className="hero-title">
-            Turn Your <br />
-            <span className="text-gradient">Passion</span> into <br />
+            Turn Your <span className="desktop-br"><br /></span>
+            <span className="text-gradient">Passion</span> into <span className="desktop-br"><br /></span>
             a Profession.
           </h1>
           <p className="hero-description">

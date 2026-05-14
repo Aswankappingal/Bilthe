@@ -36,6 +36,12 @@
     .text-gradient {
       @include text-gradient;
     }
+
+    .desktop-br {
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
   }
 
   &-description {
