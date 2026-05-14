@@ -44,7 +44,61 @@ const FilterSection = ({ title, options, icon: Icon, defaultOpen = true }) => {
     </div>
   );
 };
+const DateFilterSection = () => {
+  const [isOpen, setIsOpen] = React.useState(true);
+  const dateInputRef = React.useRef(null);
+  const [selectedDate, setSelectedDate] = React.useState("");
 
+  const handlePickDate = () => {
+    dateInputRef.current.showPicker();
+  };
+
+  return (
+    <>
+      <div className="filter-card-header" onClick={() => setIsOpen(!isOpen)}>
+        <div className="title-with-icon">
+          <Calendar size={18} className="icon" />
+          <span>Date</span>
+        </div>
+        <div className="header-actions">
+          {selectedDate && <span className="selected-val">{selectedDate}</span>}
+          <button className="clear-link" onClick={(e) => {
+            e.stopPropagation();
+            setSelectedDate("");
+          }}>Clear</button>
+          <ChevronDown size={16} className={`chevron ${isOpen ? 'rotated' : ''}`} />
+        </div>
+      </div>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="filter-card-content"
+          >
+            <div className="options-flex">
+              {["Today", "Tomorrow", "This Weekend"].map((opt, i) => (
+                <button key={i} className="opt-btn" onClick={() => setSelectedDate(opt)}>{opt}</button>
+              ))}
+              <div className="date-picker-wrapper">
+                <button className="opt-btn pick-date-btn" onClick={handlePickDate}>
+                  Pick a Date
+                </button>
+                <input 
+                  type="date" 
+                  ref={dateInputRef}
+                  className="hidden-date-input"
+                  onChange={(e) => setSelectedDate(e.target.value)}
+                />
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
 const Events = () => {
   const [searchQuery, setSearchQuery] = React.useState("");
 
@@ -81,20 +135,20 @@ const Events = () => {
               icon={Tag}
               options={FILTER_CATEGORIES} 
             />
-            <FilterSection 
-              title="Date" 
-              icon={Calendar}
-              options={["Today", "Tomorrow", "This Weekend"]} 
-            />
+            <div className="filter-card glass">
+              <DateFilterSection />
+            </div>
             <FilterSection 
               title="Languages" 
               icon={Languages}
               options={["Tamil", "English", "Hindi"]} 
+              defaultOpen={false}
             />
             <FilterSection 
               title="Price" 
               icon={Ticket}
               options={["Free", "0 - 500", "501 - 2000", "Above 2000"]} 
+              defaultOpen={false}
             />
           </div>
         </section>
