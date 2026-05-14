@@ -1,13 +1,13 @@
 @use '../../styles/variables' as *;
 
 .features-section {
-  padding: 8rem 0;
+  padding: clamp(4rem, 10vw, 8rem) 0;
   background: $white;
 
   .section-header {
     text-align: center;
     max-width: 700px;
-    margin: 0 auto 4rem;
+    margin: 0 auto clamp(2.5rem, 6vw, 4rem);
 
     .badge {
       display: inline-block;
@@ -22,7 +22,7 @@
 
     h2 {
       font-family: $font-heading;
-      font-size: 2.5rem;
+      font-size: clamp(2rem, 6vw, 2.75rem);
       color: $text-900;
       margin-bottom: 1rem;
       line-height: 1.2;
@@ -34,19 +34,19 @@
 
     p {
       color: $text-500;
-      font-size: 1.125rem;
+      font-size: clamp(1rem, 1.2vw, 1.125rem);
     }
   }
 }
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
 
 .feature-card {
-  padding: 2.5rem;
+  padding: clamp(1.5rem, 5vw, 2.5rem);
   background: $lavender-50;
   border-radius: $radius-lg;
   border: 1px solid transparent;
@@ -90,14 +90,8 @@
   }
 }
 
-@media (max-width: 768px) {
-  .features-section {
-    padding: 5rem 0;
-    
-    .section-header {
-      h2 {
-        font-size: 2rem;
-      }
-    }
+@media (max-width: 480px) {
+  .features-grid {
+    grid-template-columns: 1fr;
   }
 }
