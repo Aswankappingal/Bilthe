@@ -138,18 +138,18 @@ const Events = () => {
             <div className="filter-card glass">
               <DateFilterSection />
             </div>
-            <FilterSection 
+            {/* <FilterSection 
               title="Languages" 
               icon={Languages}
               options={["Tamil", "English", "Hindi"]} 
               defaultOpen={false}
-            />
-            <FilterSection 
+            /> */}
+            {/* <FilterSection 
               title="Price" 
               icon={Ticket}
               options={["Free", "0 - 500", "501 - 2000", "Above 2000"]} 
               defaultOpen={false}
-            />
+            /> */}
           </div>
         </section>
 
