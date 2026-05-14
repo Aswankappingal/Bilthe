@@ -1,12 +1,13 @@
 @import '../../styles/variables';
 
 .navbar {
-  padding: 1.25rem 0;
-  background-color: $white;
-  border-bottom: 1px solid $lavender-50;
+  padding: clamp(1rem, 2vw, 1.25rem) 0;
+  background-color: rgba($white, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba($lavender-100, 0.5);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
 
   .nav-content {
     display: flex;
@@ -16,31 +17,58 @@
 
   .logo {
     font-family: $font-heading;
-    font-size: 1.875rem;
+    font-size: clamp(1.5rem, 4vw, 1.875rem);
     font-weight: 800;
     color: $lavender-600;
     letter-spacing: -0.025em;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   .nav-links {
     display: flex;
     align-items: center;
-    gap: 3rem;
+    gap: clamp(1.5rem, 3vw, 3rem);
   }
 
   .nav-link {
     font-size: 0.9375rem;
-    font-weight: 500;
+    font-weight: 600;
     color: $text-700;
+    position: relative;
+    padding: 0.5rem 0;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: $lavender-500;
+      transition: width 0.3s ease;
+    }
 
     &:hover {
       color: $lavender-600;
+      &::after {
+        width: 100%;
+      }
     }
   }
 }
 
 @media (max-width: 768px) {
-  .navbar .nav-links {
-    display: none;
+  .navbar {
+    padding: 1rem 0;
+    .nav-links {
+      display: none; // Still hidden on mobile, but could add menu later
+    }
+    .logo {
+      margin-inline: auto;
+    }
   }
 }

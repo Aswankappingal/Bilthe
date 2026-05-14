@@ -1,13 +1,14 @@
 @import '../../styles/variables';
 
 .hero {
-  padding: 6rem 0;
+  padding: clamp(4rem, 10vw, 8rem) 0;
   overflow: hidden;
+  position: relative;
 
   &-grid {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
-    gap: 4rem;
+    gap: clamp(2rem, 5vw, 4rem);
     align-items: center;
   }
 
@@ -25,10 +26,12 @@
   }
 
   &-title {
-    font-size: 5rem;
+    font-size: clamp(2.5rem, 8vw, 5rem); // Fluid typography
     font-weight: 800;
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: $text-900;
 
     .text-gradient {
       @include text-gradient;
@@ -36,7 +39,7 @@
   }
 
   &-description {
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
     color: $text-500;
     max-width: 480px;
     margin-bottom: 2.5rem;
@@ -53,7 +56,7 @@
       gap: 1rem;
       margin-bottom: 1rem;
       font-weight: 500;
-      font-size: 1.125rem;
+      font-size: clamp(1rem, 1.2vw, 1.125rem);
     }
 
     .icon {
@@ -65,8 +68,9 @@
 
   &-actions {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
     margin-bottom: 2rem;
+    flex-wrap: wrap;
   }
 
   &-footer-text {
@@ -92,6 +96,7 @@
   justify-content: center;
   align-items: center;
   perspective: 1000px;
+  width: 100%;
 }
 
 .dashboard-preview {
@@ -304,23 +309,10 @@
 }
 
 @media (max-width: 1024px) {
-  .dashboard-preview {
-    transform: none;
-    height: auto;
-    max-width: 100%;
-    margin-top: 4rem;
-    
-    .main-window { height: auto; }
-    .glass-card { position: relative; top: 0; left: 0; right: 0; bottom: 0; margin: 1rem auto; width: 100%; max-width: 300px; animation: none; }
-    .abstract-shape { display: none; }
-  }
-}
-
-@media (max-width: 1024px) {
   .hero-grid {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 6rem;
+    gap: 4rem;
   }
   
   .hero-description { margin: 0 auto 2.5rem; }
@@ -329,16 +321,47 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-inline: auto;
   }
   
   .hero-actions {
     justify-content: center;
-    flex-direction: column;
   }
-  
-  .hero-title { font-size: 3.5rem; }
-  .hero-footer-text { justify-content: center; }
-  .floating-card { display: none; }
+
+  .dashboard-preview {
+    transform: none;
+    height: auto;
+    max-width: 500px;
+    margin: 4rem auto 0;
+    
+    .main-window { height: auto; min-height: 320px; }
+    .glass-card { 
+      position: relative; 
+      top: 0; left: 0; right: 0; bottom: 0; 
+      margin: 1rem auto; 
+      width: 100%; 
+      max-width: 280px; 
+      animation: none; 
+      text-align: left;
+    }
+    .abstract-shape { display: none; }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 4rem 0;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    button { width: 100%; }
+  }
+
+  .hero-footer-text {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
 }
 
 .trusted-by {
@@ -360,7 +383,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5rem;
+    gap: clamp(2rem, 5vw, 5rem);
     flex-wrap: wrap;
     opacity: 0.5;
     filter: grayscale(1);
@@ -373,25 +396,10 @@
 
     .logo-item {
       font-family: $font-heading;
-      font-size: 1.75rem;
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
       font-weight: 800;
       color: $text-700;
       letter-spacing: -0.02em;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .trusted-by {
-    margin-top: 4rem;
-    padding: 3rem 0;
-    
-    .logo-cloud {
-      gap: 2.5rem;
-      
-      .logo-item {
-        font-size: 1.25rem;
-      }
     }
   }
 }

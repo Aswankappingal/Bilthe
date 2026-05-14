@@ -118,7 +118,7 @@
 
     &:hover {
       box-shadow: $shadow-lg;
-      border-color: $lavender-300;
+      border-color: $lavender-400;
       transform: translateY(-5px);
     }
 
@@ -158,7 +158,7 @@
         }
 
         .chevron {
-          color: $text-400;
+          color: $text-500;
           transition: transform 0.4s;
           &.rotated { transform: rotate(180deg); }
         }
@@ -215,7 +215,7 @@
     border-radius: 3rem;
     border: 1px solid rgba($lavender-200, 0.6);
     background: $white;
-    color: $text-800;
+    color: $text-700;
     font-weight: 800;
     font-size: 1rem;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
